@@ -28,5 +28,17 @@ describe('options/sort-order-fallback', function() {
         this.comb.configure(config);
         this.shouldBeEqual('test.css', 'test-3.expected.css');
     });
-});
 
+    it('Should sort leftovers alphabetically in the middle of its group', function() {
+        var config = {
+            'sort-order-fallback': 'abc',
+            'sort-order': [
+                ['top'],
+                ['left', '...', 'font-size'],
+                ['color']
+            ]
+        };
+        this.comb.configure(config);
+        this.shouldBeEqual('test.css', 'test-4.expected.css');
+    });
+});
